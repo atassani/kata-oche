@@ -3,15 +3,18 @@ package com.katas.ohce;
 /**
  * Created by atassani on 03/06/16.
  */
-class Ohce {
+public class Ohce {
     private final Console console;
     private final Clock clock;
+    private int hour;
 
-    Ohce(Console console, Clock clock) {
+    public Ohce(Console console, Clock clock) {
         this.console = console;
         this.clock = clock;
     }
 
-    void run(String name) {
+    public void run(String name) {
+        hour = clock.hour();
+        console.print("¡Buenos días " + name + "!");
     }
 }

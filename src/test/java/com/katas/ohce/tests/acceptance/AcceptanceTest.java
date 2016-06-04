@@ -1,5 +1,8 @@
-package com.katas.ohce;
+package com.katas.ohce.tests.acceptance;
 
+import com.katas.ohce.Clock;
+import com.katas.ohce.Console;
+import com.katas.ohce.Ohce;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.junit.Test;
@@ -15,19 +18,6 @@ public class AcceptanceTest {
         final Clock clock = context.mock(Clock.class);
         Ohce ohce = new Ohce(console, clock);
 
-        /*
-        $ ohce Pedro
-        > ¡Buenos días Pedro!
-        $ hola
-        > aloh
-        $ oto
-        > oto
-        > ¡Bonita palabra!
-        $ stop
-        > pots
-        $ Stop!
-        > Adios Pedro
-         */
         context.checking(new Expectations() {{
             oneOf(clock).hour();
             will(returnValue(10));
@@ -40,7 +30,7 @@ public class AcceptanceTest {
                     returnValue("Stop!")
             ));
 
-            oneOf(console).print("¡Buenos días Pedro");
+            oneOf(console).print("¡Buenos días Pedro!");
             oneOf(console).print("aloh");
             oneOf(console).print("oto");
             oneOf(console).print("¡Bonita palabra!");
