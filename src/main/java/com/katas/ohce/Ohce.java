@@ -6,7 +6,6 @@ package com.katas.ohce;
 public class Ohce {
     private final Console console;
     private final Clock clock;
-    private int hour;
 
     public Ohce(Console console, Clock clock) {
         this.console = console;
@@ -14,7 +13,7 @@ public class Ohce {
     }
 
     public void run(String name) {
-        hour = clock.hour();
-        console.print("¡Buenos días " + name + "!");
+        Greeter greeter = new Greeter(console, clock, name);
+        greeter.greetHello();
     }
 }

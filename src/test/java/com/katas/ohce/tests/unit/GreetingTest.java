@@ -21,10 +21,10 @@ public class GreetingTest {
         context.checking(new Expectations() {{
             oneOf(clock).hour();
             will(returnValue(10));
-            oneOf(console).print("¡Buenos días Toni!");
+            oneOf(console).print("¡Buenos días Un nombre raro!");
         }});
 
-        ohce.run("Toni");
+        ohce.run("Un nombre raro");
 
         context.assertIsSatisfied();
     }
@@ -41,6 +41,25 @@ public class GreetingTest {
             will(returnValue(10));
 
             oneOf(console).print("¡Buenos días Toni!");
+        }});
+
+        ohce.run("Toni");
+
+        context.assertIsSatisfied();
+    }
+
+    @Test
+    public void testGreetingAfternoon() {
+        Mockery context = new Mockery();
+        final Console console = context.mock(Console.class);
+        final Clock clock = context.mock(Clock.class);
+        Ohce ohce = new Ohce(console, clock);
+
+        context.checking(new Expectations() {{
+            oneOf(clock).hour();
+            will(returnValue(16));
+
+            oneOf(console).print("¡Buenas tardes Toni!");
         }});
 
         ohce.run("Toni");
