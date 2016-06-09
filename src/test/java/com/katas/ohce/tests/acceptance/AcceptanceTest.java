@@ -12,7 +12,6 @@ import org.junit.Test;
  * Created by atassani on 03/06/16.
  */
 public class AcceptanceTest {
-    @Ignore("Until unit tests pass")
     @Test
     public void test() {
         Mockery context = new Mockery();

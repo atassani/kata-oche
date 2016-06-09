@@ -14,6 +14,9 @@ public class Ohce {
 
     public void run(String name) {
         Greeter greeter = new Greeter(console, clock, name);
+        Reverser reverser = new Reverser();
         greeter.greetHello();
+        String text = console.read();
+        String reversedText = reverser.reverse(text);
     }
 }
