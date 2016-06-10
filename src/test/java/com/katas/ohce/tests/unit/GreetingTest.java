@@ -2,6 +2,7 @@ package com.katas.ohce.tests.unit;
 
 import com.katas.ohce.Clock;
 import com.katas.ohce.Console;
+import com.katas.ohce.Greeter;
 import com.katas.ohce.Ohce;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
@@ -16,7 +17,6 @@ public class GreetingTest {
         Mockery context = new Mockery();
         final Console console = context.mock(Console.class);
         final Clock clock = context.mock(Clock.class);
-        Ohce ohce = new Ohce(console, clock);
 
         context.checking(new Expectations() {{
             oneOf(clock).hour();
@@ -24,7 +24,8 @@ public class GreetingTest {
             oneOf(console).print("¡Buenos días Un nombre raro!");
         }});
 
-        ohce.run("Un nombre raro");
+        Greeter greeter = new Greeter(console, clock, "Un nombre raro");
+        greeter.greetHello();
 
         context.assertIsSatisfied();
     }
@@ -34,7 +35,6 @@ public class GreetingTest {
         Mockery context = new Mockery();
         final Console console = context.mock(Console.class);
         final Clock clock = context.mock(Clock.class);
-        Ohce ohce = new Ohce(console, clock);
 
         context.checking(new Expectations() {{
             oneOf(clock).hour();
@@ -42,8 +42,9 @@ public class GreetingTest {
 
             oneOf(console).print("¡Buenos días Toni!");
         }});
+        Greeter greeter = new Greeter(console, clock, "Toni");
 
-        ohce.run("Toni");
+        greeter.greetHello();
 
         context.assertIsSatisfied();
     }
@@ -53,16 +54,17 @@ public class GreetingTest {
         Mockery context = new Mockery();
         final Console console = context.mock(Console.class);
         final Clock clock = context.mock(Clock.class);
-        Ohce ohce = new Ohce(console, clock);
-
         context.checking(new Expectations() {{
             oneOf(clock).hour();
             will(returnValue(16));
 
             oneOf(console).print("¡Buenas tardes Toni!");
+
         }});
 
-        ohce.run("Toni");
+        Greeter greeter = new Greeter(console, clock, "Toni");
+
+        greeter.greetHello();
 
         context.assertIsSatisfied();
     }

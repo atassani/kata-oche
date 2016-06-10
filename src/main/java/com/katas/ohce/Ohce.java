@@ -4,6 +4,7 @@ package com.katas.ohce;
  * Created by atassani on 03/06/16.
  */
 public class Ohce {
+    private static final String STOP_TEXT = "Stop!";
     private final Console console;
     private final Clock clock;
 
@@ -17,6 +18,10 @@ public class Ohce {
         Reverser reverser = new Reverser();
         greeter.greetHello();
         String text = console.read();
-        String reversedText = reverser.reverse(text);
+        while (!STOP_TEXT.equals(text)) {
+            String reversedText = reverser.reverse(text);
+            console.print(reversedText);
+            text = console.read();
+        }
     }
 }
