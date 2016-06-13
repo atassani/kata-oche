@@ -12,6 +12,6 @@ public class OhceRunner {
         Clock clock = new ClockImpl();
         Console console = new ConsoleImpl();
         Ohce ohce = new Ohce(console, clock);
-        ohce.run("Pepe");
+        ohce.run(args[0]);
     }
 }
